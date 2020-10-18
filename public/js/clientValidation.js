@@ -1,4 +1,9 @@
 
+function Test() {  
+
+print();
+
+ }
 
 
        function registerValidation () {
