@@ -1,5 +1,5 @@
 
- function Test() { print("Alo"); }
+
 
        function registerValidation () {
 
