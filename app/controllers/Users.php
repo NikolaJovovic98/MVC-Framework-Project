@@ -23,14 +23,14 @@ class Users extends Controller
         $numOfUsers = $this->userModel->numberOfUsers();
 
 
-
+/*
         for ($i = 1; $i <= $numOfUsers; $i++) {
 
             // $this->user_news = $this->userModel->countUserNews($i);
 
             array_push($this->user_news, $this->userModel->countUserNews($i));
         }
-
+       */
 
         $data = [
 
@@ -280,7 +280,11 @@ class Users extends Controller
 
             if($this->userModel->updateUserInfo($data)){
 
-                header('location: ' . URLROOT . '/users/showUserProfile/'.$data['user_id'].'');
+               
+                
+                $_SESSION['username'] = $data['user_username'];
+                $_SESSION['email'] = $data['user_email'];
+                header('location: ' . URLROOT . '/users/showUserProfile/'. $data['user_id'] .'?success=update');
                 exit();
 
             }

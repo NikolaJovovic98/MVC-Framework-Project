@@ -8,6 +8,15 @@
     ?>
 </div>
 
+<?php if(isset($_GET['success']) && $_GET['success']=='update'): ?>
+
+         <h3 style="color: green;text-align: center;">Profile updated!</h3>
+
+<?php else: ?>
+
+
+<?php endif; ?>
+
 <h1 style="text-align: center;"><?=$data['user']->username?></h1>
 
 <p style="text-align: center;"> <?= $data['user']->email?> </p>
