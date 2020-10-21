@@ -2,100 +2,106 @@
 
 //KONTROLER
 
-class Users extends Controller {
+class Users extends Controller
+{
 
-     protected $userModel;
-     protected $count;
+    protected $userModel;
+    protected $count;
+    protected $user_news = array();
 
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->userModel = $this->model('User');
-        
     }
 
 
-    public function index(){
+    public function index()
+    {
 
 
-        //$data = $this->userModel->all();
+        $numOfUsers = $this->userModel->numberOfUsers();
+
+
+
+        for ($i = 1; $i <= $numOfUsers; $i++) {
+
+            // $this->user_news = $this->userModel->countUserNews($i);
+
+            array_push($this->user_news, $this->userModel->countUserNews($i));
+        }
+
 
         $data = [
 
-            'users'=>$this->userModel->all(),
-            'usersNum' =>$this->userModel->numberOfUsers()
+            'users' => $this->userModel->all(),
+            'usersNum' => $this->userModel->numberOfUsers(),
+            'user_num_of_news' => $this->user_news,
 
         ];
 
-        $this->view('users/usersList',$data);
-
-
+        $this->view('users/usersList', $data);
     }
-    
 
-    public function show($userID){
+
+    public function show($userID)
+    {
 
         $user_data = $this->userModel->show($userID);
         $user_news = $this->userModel->showUserNews($userID);
         $user_news_count = $this->userModel->countUserNews($userID);
 
-        if(isset($_SESSION['user_id'])){
+        if (isset($_SESSION['user_id'])) {
 
             $user_followers_object = $this->userModel->showUsersYouFollow($_SESSION['user_id']);
 
-          foreach($user_followers_object as $follower){
+            foreach ($user_followers_object as $follower) {
 
-            if($follower->id == $userID){
+                if ($follower->id == $userID) {
 
-                $this->count++;
-
+                    $this->count++;
+                }
             }
-
-
-          }
-
-
         }
-        
+
 
         $data = [
 
-            'user'=>$user_data,
-            'user-news'=>$user_news,
-            'singed-In-User-Followers' =>$this->count,
-            'user-news-count'=>$user_news_count
+            'user' => $user_data,
+            'user-news' => $user_news,
+            'singed-In-User-Followers' => $this->count,
+            'user-news-count' => $user_news_count
 
 
         ];
 
-        $this->view('users/showOneUser',$data);
-
-
+        $this->view('users/showOneUser', $data);
     }
 
-    public function showUserProfile($userID){
+    public function showUserProfile($userID)
+    {
 
         $user_data = $this->userModel->show($userID);
         $user_news = $this->userModel->showUserNews($userID);
-        $users_you_follow=$this->userModel->showUsersYouFollow($userID);
+        $users_you_follow = $this->userModel->showUsersYouFollow($userID);
 
-        
+
 
         $data = [
 
-            'user'=>$user_data,
-            'user-news'=>$user_news,
-            'users-you-follow'=>$users_you_follow,
+            'user' => $user_data,
+            'user-news' => $user_news,
+            'users-you-follow' => $users_you_follow,
 
 
         ];
 
-        $this->view('users/showUserProfile',$data);
-
-
+        $this->view('users/showUserProfile', $data);
     }
 
 
-    public function register() {
+    public function register()
+    {
 
         $data = [
 
@@ -109,12 +115,12 @@ class Users extends Controller {
             'confirmPasswordError' => ''
         ];
 
-      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-              $data = [
+            $data = [
                 'username' => trim($_POST['username']),
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
@@ -143,25 +149,25 @@ class Users extends Controller {
             } else {
                 //Check if email exists.
                 if ($this->userModel->findUserByEmail($data['email'])) {
-                $data['emailError'] = 'Email is already taken.';
+                    $data['emailError'] = 'Email is already taken.';
                 }
             }
 
-           // Validate password on length, numeric values,
-            if(empty($data['password'])){
-              $data['passwordError'] = 'Please enter password.';
-            } elseif(strlen($data['password']) < 6){
-              $data['passwordError'] = 'Password must be at least 6 characters';
+            // Validate password on length, numeric values,
+            if (empty($data['password'])) {
+                $data['passwordError'] = 'Please enter password.';
+            } elseif (strlen($data['password']) < 6) {
+                $data['passwordError'] = 'Password must be at least 6 characters';
             } elseif (preg_match($passwordValidation, $data['password'])) {
-              $data['passwordError'] = 'Password must be have at least one numeric value.';
+                $data['passwordError'] = 'Password must be have at least one numeric value.';
             }
 
             //Validate confirm password
-             if (empty($data['confirmPassword'])) {
+            if (empty($data['confirmPassword'])) {
                 $data['confirmPasswordError'] = 'Please enter password.';
             } else {
                 if ($data['password'] != $data['confirmPassword']) {
-                $data['confirmPasswordError'] = 'Passwords do not match, please try again.';
+                    $data['confirmPasswordError'] = 'Passwords do not match, please try again.';
                 }
             }
 
@@ -182,12 +188,13 @@ class Users extends Controller {
             }
         }
 
-        
+
         $this->view('users/register', $data);
     }
 
-    public function login() {
-        
+    public function login()
+    {
+
         $data = [
             'title' => 'Login page',
             'username' => '',
@@ -197,7 +204,7 @@ class Users extends Controller {
         ];
 
         //Check for post
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //Sanitize post data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -219,18 +226,18 @@ class Users extends Controller {
 
             //Check if all errors are empty
             if (empty($data['usernameError']) && empty($data['passwordError'])) {
-                
-                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
 
-                if ($loggedInUser) {
-                    $this->createUserSession($loggedInUser);
-                } else {
-                    $data['passwordError'] = 'Password or username is incorrect. Please try again.';
 
-                    $this->view('users/login', $data);
-                }
+                    $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+
+                    if ($loggedInUser) {
+                        $this->createUserSession($loggedInUser);
+                    } else {
+                        $data['passwordError'] = 'Password or username is incorrect. Please try again.';
+
+                        $this->view('users/login', $data);
+                    }  
             }
-
         } else {
             $data = [
                 'username' => '',
@@ -242,17 +249,80 @@ class Users extends Controller {
         $this->view('users/login', $data);
     }
 
-    public function createUserSession($user) {
+    public function edit(){
+
+        $this->view('users/edit');
+
+    }
+
+    public function update(){
+
+
+        $data = [
+
+            'user_id'=> '',
+            'user_username'=> '',
+            'user_email'=> '',
+        ];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Sanitize post data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+
+                'user_id' => trim($_POST['userid']),
+                'user_username' => trim($_POST['username']),
+                'user_email' => trim($_POST['email']),
+                
+            ];
+
+
+            if($this->userModel->updateUserInfo($data)){
+
+                header('location: ' . URLROOT . '/users/showUserProfile/'.$data['user_id'].'');
+                exit();
+
+            }
+            else {
+
+               die("Something went wrong!");
+
+            }
+
+
+
+
+
+        }
+
+    }
+
+
+    public function createUserSession($user)
+    {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['username'] = $user->username;
         $_SESSION['email'] = $user->email;
         header('location:' . URLROOT . '/home/index');
     }
 
-    public function logout() {
+    public function createAdminSession($user)
+    {
+        $_SESSION['admin_id'] = $user->id;
+        $_SESSION['admin_username'] = $user->username;
+        header('location:' . URLROOT . '/home/index');
+    }
+
+
+    public function logout()
+    {
         unset($_SESSION['user_id']);
         unset($_SESSION['username']);
         unset($_SESSION['email']);
-        header('location:' . URLROOT );
+
+        unset($_SESSION['admin_id']);
+        unset($_SESSION['admin_username']);
+        header('location:' . URLROOT);
     }
 }

@@ -13,6 +13,16 @@
 <p style="text-align: center;"> <?= $data['user']->email?> </p>
 
 
+<div class="edit-profile-div">
+
+
+<p>Would you like to change your personal info ? <a href="<?php echo URLROOT; ?>/users/edit/">Edit your profile.</a></p>
+
+
+
+
+</div>
+
 
 <h4>News written by you:</h4>
 <div  class="news-flex">

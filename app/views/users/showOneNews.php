@@ -41,7 +41,8 @@
       <?php if($data['news']->user_id == $_SESSION['user_id']): ?>
 
                <form action="<?php echo URLROOT; ?>/news/delete/<?= $data['news']->id ?>" method="POST">
-
+ 
+                  <label for="delete-news-button" style="margin-right: 10px;">Do you want to delete this news?</label>
                    <button id="deleteNewsButton" type="submit" name="delete-news-button">Delete</button>
 
                </form>

@@ -126,6 +126,23 @@ class User {
 
     }
 
+    public function updateUserInfo($data){
+
+        $this->db->query("UPDATE users SET username =:username , email=:email WHERE id = :id");
+        
+        $this->db->bind(':username', $data['user_username']);
+        $this->db->bind(':email', $data['user_email']);
+        $this->db->bind(':id', $data['user_id']);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
     //Find user by email. Email is passed in by the Controller.
     public function findUserByEmail($email) {
         
@@ -139,4 +156,20 @@ class User {
             return false;
         }
     }
+
+    public function checkIfUserExists($data){
+
+        $this->db->query('SELECT * FROM users WHERE id=:id');
+
+        $this->db->bind(':id', $data);
+
+        if($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    
 }
