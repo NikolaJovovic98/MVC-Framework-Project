@@ -189,5 +189,87 @@ public function delete($newsID) {
     }
 }
 
+public function search () {
+
+
+    
+
+    $data = [
+
+        'search-text' => '',
+        'news' => '',
+        'search-error'=>''
+        
+        
+    ];
+
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    
+
+    $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+    $news = $this->newsModel->countSearch($data);
+
+    $data = [
+
+        'search-text' => $_POST['search_text'],
+        'news' => $this->newsModel->countSearch($data),
+        'search-error'=>''
+
+    ];
+
+    $news = $this->newsModel->countSearch($data);
+
+ $data = [
+
+        'search-text' => $_POST['search_text'],
+        'news' => $news,
+        'search-error'=>''
+
+    ];
+
+    
+    
+    if($news==0 || empty($data['search-text'])){
+
+
+        $data = [
+
+            'search-text' => $_POST['search_text'],
+            'news' => '',
+            'search-error'=>'Error'
+    
+        ];
+
+
+    }
+
+    else {
+
+
+        $news = $this->newsModel->search($data);
+
+
+                $data = [
+
+                        'search-text' => $_POST['search_text'],
+                        'news' =>$news,
+
+                    ];
+
+
+
+    }
+
+
+    
+    
+
+
+  }
+
+  $this->view('users/newsSearch',$data);
+
+}
 
 }

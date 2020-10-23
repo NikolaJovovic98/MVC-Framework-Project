@@ -65,5 +65,22 @@
                 <a href="<?php echo URLROOT; ?>/users/login">Login</a>
             <?php endif; ?>
         </li>
+
+
+        <li id="search-form-li">
+        
+            <form action="<?php echo URLROOT; ?>/news/search" method ="POST" id="search-form">
+            
+                <input type="text" name="search_text" placeholder="Search for news...">
+                
+
+                 <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                
+            </form>    
+        
+
+        </li>        
+
+
     </ul>
 </nav>

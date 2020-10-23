@@ -116,6 +116,30 @@ class News_model {
 
     }
 
+    public function search($data){
+
+
+        $this->db->query("SELECT * FROM news WHERE title LIKE :search ");
+        $this->db->bind(':search', '%'.$data['search-text'].'%');
+        
+        return $this->db->all();
+
+
+    }
+
+    public function countSearch($data){
+
+
+        $this->db->query("SELECT * FROM news WHERE title LIKE :search ");
+        $this->db->bind(':search', '%'.$data['search-text'].'%');
+        $this->db->execute();
+        return  $this->db->rowCount();
+        
+        
+
+
+    }
+
 
 
 }

@@ -19,7 +19,7 @@ html, body {
     margin: 0;
     padding: 0;
     position: absolute;
-    right: 6%;
+    right: 1%;
     top: 2%;
 }
 
@@ -27,8 +27,7 @@ html, body {
     display: inline-block;
     padding: 10px;
     border-radius: 5px;
-   
-    margin-left: 28px;
+    margin-left: 20px;
 }
 
 .top-nav ul li a {
@@ -36,7 +35,6 @@ html, body {
     text-decoration: none;
     font-size: 18px;
 
-   
 }
 
 
@@ -49,7 +47,7 @@ html, body {
 
 
 .top-nav ul li a:hover {
-    color: #afafaf;
+    color: rgb(235, 70, 11);
     transition: 0.15s ease-in;
 }
 
@@ -529,5 +527,52 @@ background-color: antiquewhite;
 
     color: red;
 
+
+}
+
+
+
+#search-form {
+
+
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  
+
+}
+
+#search-form button {
+
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #a1a1a1;
+    transition: 0.60s;
+    
+}
+#search-form button:hover {
+
+    background-color: orange;
+
+}
+
+#search-form>input {
+
+ border: none;
+ border-radius: 5px;
+color: black;
+outline: none;
+transition: 0.60s;
+text-align: center;
+font-size: 16px;
+
+}
+
+#search-form>input:hover {
+
+    background-color:antiquewhite
 
 }
