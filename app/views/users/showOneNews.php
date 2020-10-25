@@ -193,3 +193,7 @@ prijavljen na sajt -->
 
 
 
+
+        <?php
+    require APPROOT . '/views/includes/footer.php';
+    ?>

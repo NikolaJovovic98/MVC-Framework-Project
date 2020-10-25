@@ -1,3 +1,5 @@
+
+
 html, body {
     height: 100%;
     width: 100%;
@@ -7,8 +9,152 @@ html, body {
     bottom: 0;
     font-family: 'Lato', sans-serif;
 
+  
+
 }
 
+a>i {
+
+ margin-right: 10px;
+
+}
+
+.top-logo {
+
+    position:absolute;
+left:0;
+top:0;
+margin: -15px 0px 0px 0px;
+
+
+}
+
+.footer {
+
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: repeat(3,1fr );
+    background-color: black;
+    margin-top: 100px;
+
+}
+
+.login-footer .footer {
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.logo-container img{
+     transition: 0.90s;
+     border-radius: 20px;
+}
+
+.logo-container img:hover{
+  
+    background-color:blanchedalmond;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    text-align: center;
+   
+
+}
+
+.message-container p {
+
+
+ padding: 10px;
+ border-radius: 20px;
+transition: 0.90s;
+}
+
+.message-container p:hover{
+
+    background-color:blanchedalmond;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ 
+text-align: center;
+
+
+
+}
+
+.links-container ul li a{
+
+    list-style: none;
+    color: rgb(255, 94, 0);
+    text-decoration: none;
+    transition: 0.60s;
+}
+
+.links-container ul li {
+    list-style: none;
+    margin: 20px;
+}
+
+.links-container ul li a:hover {
+    
+  color: blanchedalmond;
+
+}
+
+
+.message-container a {
+
+    text-decoration: none;
+    color: orangered;
+transition: 0.60s;
+
+}
+
+
+
+.message-container a:hover {
+
+  
+color: blanchedalmond;
+
+}
+
+
+
+.message-container p {
+
+    
+    color: rgb(255, 94, 0);
+
+}
 
 
 .top-nav {
@@ -103,8 +249,8 @@ html, body {
 .container-login {
     width: 100%;
     margin: 0 auto;
-    position: relative;
-    top: 20%;
+    display: block;
+    margin-top: 100px;
 }
 
 .wrapper-login {

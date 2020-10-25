@@ -83,3 +83,9 @@
     <?php endforeach; ?>
 
 </div>
+
+
+
+<?php
+    require APPROOT . '/views/includes/footer.php';
+    ?>

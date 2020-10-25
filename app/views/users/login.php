@@ -48,3 +48,12 @@
         </form>
     </div>
 </div>
+
+
+<div class="login-footer">
+    
+<?php
+ require APPROOT . '/views/includes/footer.php';
+?>
+
+    </div>

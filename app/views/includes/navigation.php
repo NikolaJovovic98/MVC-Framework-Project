@@ -1,5 +1,12 @@
 <nav class="top-nav">
 
+
+
+<img class="top-logo" src="<?php echo URLROOT ?>/public/img/logoSmall.png" alt="MVC logo">
+
+
+
+
     <ul class="nav-ul">
 
 

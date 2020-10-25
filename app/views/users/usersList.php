@@ -52,6 +52,10 @@ require APPROOT . '/views/includes/head.php';
         <?php endforeach; ?>
 
 
+        <?php
+    require APPROOT . '/views/includes/footer.php';
+    ?>
+
         <script>
             function singupAlert() {
 

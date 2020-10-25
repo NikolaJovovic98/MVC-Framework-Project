@@ -93,3 +93,10 @@ $one_news->title tj daj mi naslov od tog objekta itd itd ima mnogo nacina da se 
 
 
 </div>
+
+
+
+
+<?php
+    require APPROOT . '/views/includes/footer.php';
+    ?>

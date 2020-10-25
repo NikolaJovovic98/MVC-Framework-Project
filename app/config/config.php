@@ -20,4 +20,4 @@ lakse dostupati do nekih djelova sajta ( ne moramo stalno da kucamo putanju do n
     
 
     //ime sajta
-    define('SITENAME', 'Login & Register ');
+    define('SITENAME', 'MVC Project ');
