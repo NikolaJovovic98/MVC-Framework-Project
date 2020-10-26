@@ -56,6 +56,15 @@
 
 
 
+<?php if($data['count-follow']): ?>
+
+    <div class="user-followers " style="text-align: center;background-color: orangered;">
+
+<p>You dont follow any user yet.</p>
+
+    </div>
+
+<?php else: ?>
 
 <div class="user-followers">
 
@@ -65,6 +74,7 @@
 
     </div>
     
+   
 
     <?php foreach($data['users-you-follow'] as $follower): ?>
 
@@ -84,7 +94,7 @@
 
 </div>
 
-
+    <?php endif; ?>
 
 <?php
     require APPROOT . '/views/includes/footer.php';

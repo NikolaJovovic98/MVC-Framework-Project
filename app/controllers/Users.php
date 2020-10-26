@@ -84,7 +84,7 @@ class Users extends Controller
         $user_data = $this->userModel->show($userID);
         $user_news = $this->userModel->showUserNews($userID);
         $users_you_follow = $this->userModel->showUsersYouFollow($userID);
-
+        $count_followers = $this->userModel->countUsersYouFollow($userID);
 
 
         $data = [
@@ -92,7 +92,7 @@ class Users extends Controller
             'user' => $user_data,
             'user-news' => $user_news,
             'users-you-follow' => $users_you_follow,
-
+            'count-follow'=>$count_followers,
 
         ];
 

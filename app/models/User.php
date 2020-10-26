@@ -60,6 +60,26 @@ class User {
 
     }
 
+    public function countUsersYouFollow($data){
+
+         $this->db->query("SELECT * FROM users WHERE id IN (SELECT following_user_id FROM follows uf WHERE uf.user_id = :id)");
+         $this->db->bind(':id',$data);
+         $this->db->execute();
+
+         if($this->db->rowCount() > 0){
+
+           return false;
+
+         }
+
+         else{
+
+            return true;
+
+         }
+
+    }
+
     public  function all(){
 
         if(isset($_SESSION['user_id'])){
