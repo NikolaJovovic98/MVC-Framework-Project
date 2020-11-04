@@ -36,7 +36,7 @@ class Users extends Controller
 
             'users' => $this->userModel->all(),
             'usersNum' => $this->userModel->numberOfUsers(),
-            'user_num_of_news' => $this->user_news,
+            
 
         ];
 

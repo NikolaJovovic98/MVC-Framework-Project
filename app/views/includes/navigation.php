@@ -2,10 +2,9 @@
 
 
 
-<img class="top-logo" src="<?php echo URLROOT ?>/public/img/logoSmall.png" alt="MVC logo">
 
 
-
+  <div>
 
     <ul class="nav-ul">
 
@@ -90,4 +89,6 @@
 
 
     </ul>
+
+</div>
 </nav>

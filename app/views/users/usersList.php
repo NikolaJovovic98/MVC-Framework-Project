@@ -11,15 +11,9 @@ require APPROOT . '/views/includes/head.php';
 
 
 
-<?php foreach ($data['user_num_of_news'] as $user_news) : ?>
+<h2 style="text-align: center;">USERS LIST (number of users: <?= $data['usersNum']; ?>)</h2>
 
-    <p><?= $user_news ?> </p>
-
-<?php endforeach; ?>
-
-<h1 style="text-align: center;">USERS LIST (number of users: <?= $data['usersNum']; ?>)</h1>
-
-
+<div class="users-list-div" >
 <?php foreach ($data['users'] as $user) : ?>
 
 
@@ -51,6 +45,8 @@ require APPROOT . '/views/includes/head.php';
 
         <?php endforeach; ?>
 
+
+        </div>
 
         <?php
     require APPROOT . '/views/includes/footer.php';

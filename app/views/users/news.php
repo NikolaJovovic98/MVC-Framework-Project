@@ -27,6 +27,8 @@ View je ono sto korisnik vidi na ekranu tj html nema baza podataka i nikakve log
 
 <h1 style="text-align: center;">NEWS FEED</h1>
 
+<div class="quick-search-div"><input type="text" placeholder="Quick search..." id="quick-search" ></div>
+
 
 <?php
 
@@ -58,9 +60,9 @@ $one_news->title tj daj mi naslov od tog objekta itd itd ima mnogo nacina da se 
          
         <a href="<?php echo URLROOT; ?>/news/show/<?= $one_news->id; ?>" id="one-user-anchor" >
 
-        <div class="news-section">
+        <div class="news-section" id="news-section">
 
-        <h3> <?= $one_news->title; ?></h3>
+        <h3 class="titleClass"> <?= $one_news->title; ?></h3>
         <p> <?= $one_news->synopsis; ?>   </p>
   
    

@@ -62,7 +62,7 @@
 
 <p>You dont follow any user yet.</p>
 
-    </div>
+    </div> 
 
 <?php else: ?>
 
