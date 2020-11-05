@@ -13,7 +13,14 @@ require APPROOT . '/views/includes/head.php';
 
 <h2 style="text-align: center;">USERS LIST (number of users: <?= $data['usersNum']; ?>)</h2>
 
+<div class="quick-search-div">
+
+    <input type="text" placeholder="Quick Search..." id="quick-search-user">
+
+</div>  
+
 <div class="users-list-div" >
+
 <?php foreach ($data['users'] as $user) : ?>
 
 
@@ -35,7 +42,7 @@ require APPROOT . '/views/includes/head.php';
 
                 <ul>
 
-                    <li> <b>Username:</b> <?= $user->username; ?> </li>
+                    <li class="username-user"> <b>Username:</b> <?= $user->username; ?> </li>
 
                 </ul>
 

@@ -861,3 +861,13 @@ width: 70%;
 border: 2px solid black
 
 }
+
+#quick-search-user {
+
+    padding: 10px;
+    outline: none;
+    border-radius: 6px;   
+    width: 70%;
+    border: 2px solid black
+    
+    }

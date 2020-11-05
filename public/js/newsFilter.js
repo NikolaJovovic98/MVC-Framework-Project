@@ -4,6 +4,10 @@ const quickSearchField = document.querySelector('#quick-search')
 
 quickSearchField.addEventListener('keyup',filterSearch)
 
+const quickSearchFieldUser = document.querySelector('#quick-search-user')
+
+
+
 function filterSearch(e){
 
     const text = e.target.value.toLowerCase()

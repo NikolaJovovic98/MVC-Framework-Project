@@ -12,6 +12,7 @@
     <script type="text/javascript" src="<?php echo URLROOT ?>/public/js/clientValidation.js" defer></script>
     <script type="text/javascript" src="<?php echo URLROOT ?>/public/js/navActive.js" defer></script>
     <script type="text/javascript" src="<?php echo URLROOT ?>/public/js/newsFilter.js" defer></script>
+    <script type="text/javascript" src="<?php echo URLROOT ?>/public/js/usersFilter.js" defer></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
